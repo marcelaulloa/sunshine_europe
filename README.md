@@ -1,10 +1,10 @@
 # Where the sun shines in Europe?
 
 ## Objective - Problem description
-Data engineering project to analyze data from several meteorological stations in Europe to see how much sunshine each country gets per year.
+Data engineering project to analyze data from several meteorological stations in Europe to see how much sunshine each country gets yearly.
 
 ## Data Source Explained
-The dataset choosen was the Daily Sunshine duration from the [European Climate Assessment & Dataset project](https://www.ecad.eu/). How to find the dataset:
+The dataset chosen was the Daily Sunshine duration from the [European Climate Assessment & Dataset project](https://www.ecad.eu/). How to find the dataset:
 Daily Data > Download predefined subsets (ASCII) > Daily sunshine duration SS
 
 The data comes in a zip folder containing several .txt files. The majority of the files contain the same column structure: 
@@ -14,7 +14,7 @@ The data comes in a zip folder containing several .txt files. The majority of th
 - SS   : Sunshine in 0.1 Hours
 - Q_SS : quality code for SS (0='valid'; 1='suspect'; 9='missing')
 
-In the same zip file there is also a reference file called "sources.txt". This file contains the following columns:
+In the same zip file, there is also a reference file called "sources.txt". This file contains the following columns:
 - STAID  : Station identifier
 - SOUID  : Source identifier
 - SOUNAME: Source name
@@ -28,7 +28,7 @@ In the same zip file there is also a reference file called "sources.txt". This f
 - PARID  : Participant identifier
 - PARNAME: Participant name
 
-For the sake of simplicity I'm only using the Station Id and the Country Code form the sources.txt.
+For simplicity, I'm only using the Station Id and the Country Code from the sources.txt.
 
 ## Project Pipeline Explained
 1. Terraform will create all resources necessary for the project, which are:
@@ -36,32 +36,32 @@ For the sake of simplicity I'm only using the Station Id and the Country Code fo
     - 1 dataset on BigQuery.
     - 1 spark Cluster.
     - Another bucket to be used by Spark jobs.
-    - All resources to be use by Mage to run in the cloud. 
-    Finally it will also upload the pyspark files into Google Cloud Storage, in the same bucket we just created.
-2. On mage we have the data pipeline that consists of:
+    - All resources to be used by Mage to run in the cloud. 
+    Finally, it will upload the pyspark files into Google Cloud Storage in the same bucket we just created.
+2. On Mage we have the data pipeline that consists of:
 **Data Ingestion**
-- A data loader that downloads the zip file and extract the data files to the bucket. (load_zip_files.py)
-- A data loader that separates the sources.txt file and also save it in the bucket.(sources_load.py)
+- A data loader that downloads the zip file and extracts the data files to the bucket. (load_zip_files.py)
+- A data loader that separates the sources.txt file and also saves it in the bucket.(sources_load.py)
 **Data Transformation via Spark**
 - A data transformer that submits a spark job with data transformations for all files with the same structure. (spark_transform.py)
 - A data transformer that submits a spark job with data transformations for the sources file. (spark_job_sources.py)
-- A final data transformer that submits a spark job that joins the dataset to the sources table a saves it in BigQuery. (spark_job_sources.py)
+- A final data transformer that submits a spark job that joins the dataset to the sources table and saves it in BigQuery. (spark_job_sources.py)
 
-- Each of the above transformers will submit a python script to run in the cluster to run transformation using PySpark.
+- Each of the above transformers will submit a Python script to run in the cluster to run transformations using PySpark.
 
 ## Technologies
-Cloud : GCP
-IaC : Terraform for making Bucket in GCS, running Mage on the cloud and creating dataset on BigQuery
-Workflow orchestration : Mage
-Data Warehouse : BigQuery
+Cloud: GCP
+IaC: Terraform for making Bucket in GCS, running Mage on the cloud, and creating dataset on BigQuery
+Workflow orchestration: Mage
+Data Warehouse: BigQuery
 
 ## Dashboard
-The dashboard tries to answer some basic questions regarding the average sunshine duration by country. 
+The dashboard answers some basic questions regarding the average sunshine duration by country. 
 [Dashboard link.](https://lookerstudio.google.com/reporting/7c37008d-cda1-4ec0-a15d-e1a2b62d78ad/page/CPywD)
 
 ![Dashboard](./image/dashboard.png)
 
-## Steps to replicate project
+## Steps to replicate the project
 
 1. Create a project in Google Cloud
 
@@ -83,7 +83,7 @@ $ gcloud auth application-default login
 ```
 $ ./enable_apis.sh
 ```
-It might take some time until you start seeing several lines in the terminal indicatin "finish successfully".
+It might take some time until you start seeing several lines in the terminal indicating "finish successfully".
 
 Alternative:
 If your computer doesn't have a bash shell (like on Windows), you can go to the Google Cloud console, go to `APIs & Services` and manually make sure the following APIs are enabled:
@@ -132,7 +132,7 @@ service_ip = "34.107.187.208"
 │   on load_balancer.tf line 7, in resource "google_compute_security_policy" "policy":
 │    7: resource "google_compute_security_policy" "policy" {
 ```
-You can still open Mage and all your resources should have been created. 
+You can still open Mage, and all your resources should have been created. 
 - &emsp;Go to you Google Cloud Console and go to "Cloud Run". 
 - &emsp;Find the mage-test service and click on it.
 - &emsp;Find the link to your mage instance, it should look something like this: `URL: https://mage-test-jdeghisoas-lm.a.run.app`
@@ -163,7 +163,7 @@ Bucket: `project id + '-mage-bucket'`
 - A folder called spark with processed data
 - A folder called spark_sources with the sources files processed.
 Bicket: `project id + '-temp-mage-bucket'`
-- Should be empty it was only temeporaly used by the spark cluster to save the data to bigquery.
+- Should be empty it was only temporarily used by the spark cluster to save the data to BigQuery.
 
 On BigQuery:
 - A dataset called: `sunshine_eu_dataset`
@@ -172,9 +172,9 @@ On BigQuery:
 12. Dashboard
 
 You have two options: 
-1. Copy my dashboard and update the dataset doing the following:
+1. Copy my dashboard and update the dataset by doing the following:
 - &emsp;Go to [my dashboard](https://lookerstudio.google.com/reporting/7c37008d-cda1-4ec0-a15d-e1a2b62d78ad/page/CPywD) and click on "Make a Copy".
-- &emsp;n your copy click on the top menu called "Resource", choose "Manage added data sources"
+- &emsp;n your copy click on the top menu called "Resource", and choose "Manage added data sources"
 - &emsp;Under actions click edit.
 - &emsp;If it's your first dashboard with bigquery it will ask you to authorize to connect to your BigQuery projects.
 - &emsp;Click on "my projects" option and find your recently created project, dataset and the table "report"
@@ -182,26 +182,26 @@ You have two options:
 - &emsp;Apply.
 - &emsp;Done!
 
-2. Create your dashboard from scratch doing the following:
+2. Create your dashboard from scratch by doing the following:
 - &emsp;Manually create a new report on [Looker Studio](https://lookerstudio.google.com/).
-- &emsp;On the first screen after creating a new report the system will ask you to add data to your report.
-- &emsp;Choose Google BigQuery find your project, your dataset and the table report.
+- &emsp;On the first screen after creating a new report, the system will ask you to add data to your report.
+- &emsp;Choose Google BigQuery to find your project, your dataset and the table report.
 - &emsp;Add a field calculating the average of Sun_hrs.
 - &emsp;Add a field for calculating seasons with the following formula: `if((month(DATE)<3)AND(day(DATE)<=20),"Winter",if((month(DATE)<6)AND(day(DATE)<=21),"Spring",if((month(DATE)<3)AND(day(DATE)<=23),"Autumn","Summer")))`
 - Create:
 - &emsp;1 Map with Country Code on dimensions and Avg of Sun hrs on the metrics
-- &emsp;1 Bar grah with record count on the metrics and country code as dimensions
-- &emsp;1 Bar graph with average sun hrs on metrics and country code as dimensions an drill-down dimensions for color coding.
+- &emsp;1 Bar graph with record count on the metrics and country code as dimensions
+- &emsp;1 Bar graph with average sun hrs on metrics and country code as dimensions and drill-down dimensions for color coding.
 - &emsp;1 Pivot Table with Heatmap with Seasons on column dimension and country code on row dimension and average sun hrs on metrics.
     
 13. Cleaning up
 
-You need to manually delete thee `sunshine_eu_dataset`, which you can find in the GCP console by clicking in the `BigQuery` section and expanding your project's name. 
+You need to manually delete the `sunshine_eu_dataset`, which you can find in the GCP console by clicking on the `BigQuery` section and expanding your project's name. 
 
-Then you can destroy the other resources created in the project by doing:
+Then, you can destroy the other resources created in the project by doing:
 
 ```
 $ terraform destroy
 ```
 
-It's possible that deleting the database might fail. You need to wait a few minutes and try `terraform destroy` again if that's the case.
+It's possible that deleting the database might fail. If that's the case, you need to wait a few minutes and try `terraform destroy` again.
