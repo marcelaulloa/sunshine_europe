@@ -59,7 +59,7 @@ Data Warehouse : BigQuery
 The dashboard tries to answer some basic questions regarding the average sunshine duration by country. 
 [Dashboard link.](https://lookerstudio.google.com/reporting/7c37008d-cda1-4ec0-a15d-e1a2b62d78ad/page/CPywD)
 
-![Dashboard](../image/dashboard.png)
+![Dashboard](./image/dashboard.png)
 
 ## Steps to replicate project
 
@@ -133,11 +133,10 @@ service_ip = "34.107.187.208"
 │    7: resource "google_compute_security_policy" "policy" {
 ```
 You can still open Mage and all your resources should have been created. 
-    a. Go to you Google Cloud Console and go to "Cloud Run". 
-    b. Find the mage-test service and click on it.
-    c. Find the link to your mage instance, it should look something like this:
-        URL: https://mage-test-jdeghisoas-lm.a.run.app 
-    d. Continue on the next steps.
+- &emsp;Go to you Google Cloud Console and go to "Cloud Run". 
+- &emsp;Find the mage-test service and click on it.
+- &emsp;Find the link to your mage instance, it should look something like this: `URL: https://mage-test-jdeghisoas-lm.a.run.app`
+- &emsp;Continue on the next steps.
 
 10. Set up the pipeline
 
@@ -159,11 +158,11 @@ Click on the running run and follow the execution. The full pipeline should take
 12. What you should see in your project after running the Pipeline:
 
 On Google Storage 
-Bucket: project id + `-mage-bucket`
+Bucket: `project id + '-mage-bucket'`
 - A folder called raw with all .txt files
 - A folder called spark with processed data
 - A folder called spark_sources with the sources files processed.
-Bicket: project id + `-temp-mage-bucket`
+Bicket: `project id + '-temp-mage-bucket'`
 - Should be empty it was only temeporaly used by the spark cluster to save the data to bigquery.
 
 On BigQuery:
