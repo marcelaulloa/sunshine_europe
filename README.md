@@ -174,26 +174,26 @@ On BigQuery:
 
 You have two options: 
 1. Copy my dashboard and update the dataset doing the following:
-- Go to [my dashboard](https://lookerstudio.google.com/reporting/7c37008d-cda1-4ec0-a15d-e1a2b62d78ad/page/CPywD) and click on "Make a Copy".
-- On your copy click on the top menu called "Resource", choose "Manage added data sources"
-- Under actions click edit.
-- If it's your first dashboard with bigquery it will ask you to authorize to connect to your BigQuery projects.
-- Click on "my projects" option and find your recently created project, dataset and the table "report"
-- Click reconnect.
-- Apply.
-- Done!
+- &emsp;Go to [my dashboard](https://lookerstudio.google.com/reporting/7c37008d-cda1-4ec0-a15d-e1a2b62d78ad/page/CPywD) and click on "Make a Copy".
+- &emsp;n your copy click on the top menu called "Resource", choose "Manage added data sources"
+- &emsp;Under actions click edit.
+- &emsp;If it's your first dashboard with bigquery it will ask you to authorize to connect to your BigQuery projects.
+- &emsp;Click on "my projects" option and find your recently created project, dataset and the table "report"
+- &emsp;Click reconnect.
+- &emsp;Apply.
+- &emsp;Done!
 
 2. Create your dashboard from scratch doing the following:
-&emsp;- Manually create a new report on [Looker Studio](https://lookerstudio.google.com/).
-&emsp;- On the first screen after creating a new report the system will ask you to add data to your report.
-&emsp;- Choose Google BigQuery find your project, your dataset and the table report.
-&emsp;- Add a field calculating the average of Sun_hrs.
-&emsp;- Add a field for calculating seasons with the following formula: `if((month(DATE)<3)AND(day(DATE)<=20),"Winter",if((month(DATE)<6)AND(day(DATE)<=21),"Spring",if((month(DATE)<3)AND(day(DATE)<=23),"Autumn","Summer")))`
+- &emsp;Manually create a new report on [Looker Studio](https://lookerstudio.google.com/).
+- &emsp;On the first screen after creating a new report the system will ask you to add data to your report.
+- &emsp;Choose Google BigQuery find your project, your dataset and the table report.
+- &emsp;Add a field calculating the average of Sun_hrs.
+- &emsp;Add a field for calculating seasons with the following formula: `if((month(DATE)<3)AND(day(DATE)<=20),"Winter",if((month(DATE)<6)AND(day(DATE)<=21),"Spring",if((month(DATE)<3)AND(day(DATE)<=23),"Autumn","Summer")))`
 - Create:
-&emsp;- 1 Map with Country Code on dimensions and Avg of Sun hrs on the metrics
-&emsp;- 1 Bar grah with record count on the metrics and country code as dimensions
-&emsp;- 1 Bar graph with average sun hrs on metrics and country code as dimensions an drill-down dimensions for color coding.
-&emsp;- 1 Pivot Table with Heatmap with Seasons on column dimension and country code on row dimension and average sun hrs on metrics.
+- &emsp;1 Map with Country Code on dimensions and Avg of Sun hrs on the metrics
+- &emsp;1 Bar grah with record count on the metrics and country code as dimensions
+- &emsp;1 Bar graph with average sun hrs on metrics and country code as dimensions an drill-down dimensions for color coding.
+- &emsp;1 Pivot Table with Heatmap with Seasons on column dimension and country code on row dimension and average sun hrs on metrics.
     
 13. Cleaning up
 
