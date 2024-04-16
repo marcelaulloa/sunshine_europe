@@ -174,14 +174,14 @@ On BigQuery:
 
 You have two options: 
     1. Copy my dashboard and update the dataset doing the following:
-        a. Go to [my dashboard](https://lookerstudio.google.com/reporting/7c37008d-cda1-4ec0-a15d-e1a2b62d78ad/page/CPywD) and click on "Make a Copy".
-        b. On your copy click on the top menu called "Resource", choose "Manage added data sources"
-        c. Under actions click edit.
-        d. If it's your first dashboard with bigquery it will ask you to authorize to connect to your BigQuery projects.
-        e. Click on "my projects" option and find your recently created project, dataset and the table "report"
-        f. Click reconnect.
-        g. Apply.
-        h. Done!
+        - Go to [my dashboard](https://lookerstudio.google.com/reporting/7c37008d-cda1-4ec0-a15d-e1a2b62d78ad/page/CPywD) and click on "Make a Copy".
+        - On your copy click on the top menu called "Resource", choose "Manage added data sources"
+        - Under actions click edit.
+        - If it's your first dashboard with bigquery it will ask you to authorize to connect to your BigQuery projects.
+        - Click on "my projects" option and find your recently created project, dataset and the table "report"
+        - Click reconnect.
+        - Apply.
+        - Done!
 
     2. Create your dashboard from scratch doing the following:
         a. Manually create a new report on [Looker Studio](https://lookerstudio.google.com/).
