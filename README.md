@@ -184,11 +184,11 @@ You have two options:
 - Done!
 
 2. Create your dashboard from scratch doing the following:
-- Manually create a new report on [Looker Studio](https://lookerstudio.google.com/).
-- On the first screen after creating a new report the system will ask you to add data to your report.
-- Choose Google BigQuery find your project, your dataset and the table report.
-- Add a field calculating the average of Sun_hrs.
-- Add a field for calculating seasons with the following formula: `if((month(DATE)<3)AND(day(DATE)<=20),"Winter",if((month(DATE)<6)AND(day(DATE)<=21),"Spring",if((month(DATE)<3)AND(day(DATE)<=23),"Autumn","Summer")))`
+emsp - Manually create a new report on [Looker Studio](https://lookerstudio.google.com/).
+emsp - On the first screen after creating a new report the system will ask you to add data to your report.
+emsp - Choose Google BigQuery find your project, your dataset and the table report.
+emsp - Add a field calculating the average of Sun_hrs.
+emsp - Add a field for calculating seasons with the following formula: `if((month(DATE)<3)AND(day(DATE)<=20),"Winter",if((month(DATE)<6)AND(day(DATE)<=21),"Spring",if((month(DATE)<3)AND(day(DATE)<=23),"Autumn","Summer")))`
 - Create:
 * 1 Map with Country Code on dimensions and Avg of Sun hrs on the metrics
 - 1 Bar grah with record count on the metrics and country code as dimensions
